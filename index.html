@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+
+        #envelope {
+            margin: 150px auto;
+            position: relative;
+            width: 280px;
+            height: 180px;
+            border-bottom-left-radius: 6px;
+            border-bottom-right-radius: 6px;
+            background-color: #f9c5c8;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        #envelope:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 90px solid #f8b3b7;
+            transform-origin: top;
+            transition: all 0.5s ease;
+            z-index: 2;
+        }
+
+        #envelope.open:before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        #letter {
+            position: absolute;
+            width: 90%;
+            height: 0;
+            background: white;
+            left: 5%;
+            bottom: 5%;
+            transition: all 0.5s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 0 15px;
+            box-sizing: border-box;
+            overflow: hidden;
+            opacity: 0;
+        }
+
+        #envelope.open #letter {
+            height: 90%;
+            opacity: 1;
+            padding: 15px;
+        }
+
+        .signature {
+            font-style: italic;
+            margin-top: 10px;
+            text-align: right;
+            color: #666;
+        }
+
+        .credit {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div id="envelope" onclick="toggleEnvelope()">
+        <div id="letter">
+            <p>Você é a razão do meu sorriso todas as manhãs...</p>
+            <div class="signature">Com amor,</div>
+        </div>
+    </div>
+
+    <div class="credit">the_coding_wizard 💬</div>
+
+    <script>
+        function toggleEnvelope() {
+            const envelope = document.getElementById('envelope');
+            envelope.classList.toggle('open');
+        }
+
+        // Abre automaticamente após 2 segundos
+        setTimeout(() => {
+            document.getElementById('envelope').classList.add('open');
+        }, 2000);
+    </script>
+</body>
+</html>
